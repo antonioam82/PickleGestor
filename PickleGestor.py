@@ -20,7 +20,7 @@ def conte(x):
 def busca_ar(n):
     try:
         n=pickle.load(open(n,"rb"))
-        sob=ns(input("Ya existe un archivo con ese nombre ¿Desea sobreescribirlo?: "))
+        sob=ns(input("Ya existe un archivo con ese nombre ¿Desea sobreescribirlo?(n/s): "))
         if sob==("s"):
             pickle.dump(lista,open(nombreA,"wb"))
         else:
@@ -54,7 +54,7 @@ def dat(n):
 
 dire_act=os.getcwd()
 print("El directorio actual es",dire_act)
-camb=ns(input("¿Desea cambiarlo?: "))
+camb=ns(input("¿Desea cambiarlo?(n/s): "))
 
 if camb=="s":
     while True:
@@ -67,13 +67,14 @@ if camb=="s":
         
 
 while True:
+    print("************[PICKLE GESTOR]************")
     print("Escoja una opción.")
     print("A)CREAR NUEVO ARCHIVO.")
     print("B)VER UN ARCHIVO.")
     print("C)INTRODUCIR CAMBIOS EN UN ARCHIVO.")
     op=opt(input("Introduzca aquí su opción: "),["A","B","C"])
     if op==("A"):
-        datt=ns(input("¿Añadir datos ahora?: "))
+        datt=ns(input("¿Añadir datos ahora?(n/s): "))
         lista=[]
         if datt=="s":
             contenido=input("Introduzca dato/s separados por coma: ")
@@ -182,10 +183,8 @@ while True:
                 print("")
                 print("NUEVO ESTADO: ",nombre)
                 print("")
-            #else:
-                #print("NO SE PUDO COMPLETAR LA OPERACION (DATO/S INTRODUCIDO/S INCORRECTO/S)")#¿REALMENTE HACE FALTA?
                 
-        elif op=="D":############################################################
+        elif op=="D":
             nuevo_nombre=input("Introduzca nuevo nombre para el archivo: ")##
             lista_ar=os.listdir()#LISTA DE ARCHIVOS EN EL DIRECTORIO DE PYTHON
             for i in lista_ar:
@@ -197,7 +196,7 @@ while True:
                 
         if op!="D":
             pickle.dump(nombre,open(nombreA,"wb"))      
-    conti=ns(input("¿Desea continuar?: "))
+    conti=ns(input("¿Desea continuar?(n/s): "))
     if conti==("n"):
         break
     try:
